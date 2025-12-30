@@ -6,7 +6,12 @@ This project demonstrates how Generative AI can be integrated into a structured 
 ## Problem Statement
 How can Generative AI be used as a meaningful step in a data pipeline rather than as a standalone demo?
 
-## Workflow
+## Learning Notes
+- Generative AI is most effective when used **after data preprocessing** to interpret results, not as a replacement for data handling.
+- Treating GenAI as a **separate inference step** keeps the workflow modular and easier to extend.
+- AI-assisted analysis can generate summaries and insights that help guide next steps in decision-making.
+- Clear data flow and clean inputs are critical for meaningful GenAI outputs.
+
 ## Workflow
 1. Ingest raw dataset
 2. Clean and preprocess relevant text data
