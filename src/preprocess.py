@@ -16,9 +16,12 @@ def preprocess_text(df: pd.DataFrame, text_column: str) -> pd.Series:
 
     return text_data
 
+
 if __name__ == "__main__":
     from ingest import load_data
 
-    df = load_data("data/amazon_mobile_data.csv")
-    cleaned_text = preprocess_text(df, text_column="<PUT_COLUMN_NAME_HERE>")
+    df = load_data("data/amazon_review.csv")
+    cleaned_text = preprocess_text(df, text_column="reviewText")
+
+    # Sanity check (can remove later)
     print(cleaned_text.head())
