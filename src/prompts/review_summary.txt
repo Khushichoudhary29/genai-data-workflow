@@ -1,0 +1,9 @@
+You are a data analyst helping a product team understand customer feedback.
+
+Given the following customer reviews, do the following:
+1. Write a concise overall summary (3–4 lines).
+2. List three common positive points.
+3. List three common negative points.
+
+Customer reviews:
+{{REVIEWS}}
