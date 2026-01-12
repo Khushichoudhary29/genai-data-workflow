@@ -11,5 +11,8 @@ def load_data(file_path: str) -> pd.DataFrame:
         raise RuntimeError(f"Failed to load data: {e}")
 
 if __name__ == "__main__":
-    data = load_data("data/amazon_mobile_data.csv")
+    data = load_data("data/amazon_review.csv")
     print(data.head())
+    
+    print(data.columns)
+    print(data.head(3))

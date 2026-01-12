@@ -1,31 +1,36 @@
-def generate_insights(reviews: list[str]) -> str:
-    """
-    Generate structured insights from customer reviews using Gemini.
-    """
-    if not reviews:
-        raise ValueError("No reviews provided for insight generation")
+import subprocess
 
-    joined_reviews = "\n".join(reviews)
+def generate_insights(reviews):
+    prompt = f"""
+You are a data analyst.
+Analyze the following product reviews and summarize:
+1. Common positive themes
+2. Common complaints
+3. Overall sentiment
 
-    with open("src/prompts/review_summary.txt", "r") as f:
-        prompt_template = f.read()
+Reviews:
+{reviews}
+"""
 
-    prompt = prompt_template.replace("{{REVIEWS}}", joined_reviews[:6000])
+    result = subprocess.run(
+    ["ollama", "run", "llama3"],
+    input=prompt,
+    text=True,
+    encoding="utf-8",
+    errors="ignore",
+    capture_output=True
+)
 
-    # PSEUDO-CODE: Gemini API integration happens here
-    # response = gemini_model.generate(prompt)
 
-    response = "Gemini response placeholder (API integration pending)"
-
-    return response
+    return result.stdout
 
 
 if __name__ == "__main__":
-    # Simple local test (architecture validation)
-    sample_reviews = [
-        "Battery life is great but camera quality is average.",
-        "Excellent performance, heats up sometimes.",
-        "Value for money, display is very sharp."
-    ]
+    sample_reviews = """
+    Battery life is excellent and lasts all day.
+    Camera quality is poor in low light.
+    Fast performance and smooth display.
+    Overheats while gaming.
+    """
 
     print(generate_insights(sample_reviews))
